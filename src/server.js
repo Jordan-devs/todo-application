@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.use("/auth", authRoutes);
-app.use("/todos", authMiddleware, todoRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/todos", authMiddleware, todoRoutes);
 
 app.listen(PORT, () => console.log(`Server has started on port: ${PORT}`));
