@@ -59,7 +59,7 @@
     let selectedTab = "All";
     let todos = [];
 
-    const apiBase = "https://todo-app-twfm.onrender.com";
+    const apiBase = "/";
 
     // elements
     const nav = document.querySelector("nav");
@@ -211,7 +211,7 @@
         let data;
         if (isRegistration) {
           // register an account
-          const response = await fetch(apiBase + "/api/auth/register", {
+          const response = await fetch(apiBase + "api/auth/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username: emailVal, password: passVal }),
@@ -219,7 +219,7 @@
           data = await response.json();
         } else {
           // login an account
-          const response = await fetch(apiBase + "/api/auth/login", {
+          const response = await fetch(apiBase + "api/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username: emailVal, password: passVal }),
@@ -269,7 +269,7 @@
 
     async function fetchTodos() {
       isLoading = true;
-      const response = await fetch(apiBase + "/api/todos", {
+      const response = await fetch(apiBase + "api/todos", {
         headers: { Authorization: token },
       });
       const todosData = await response.json();
@@ -280,7 +280,7 @@
 
     async function updateTodo(index) {
       // set task complete status to true
-      await fetch(apiBase + "/api/todos" + "/" + index, {
+      await fetch(apiBase + "api/todos" + "/" + index, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -296,7 +296,7 @@
 
     async function deleteTodo(index) {
       // set task complete status to true
-      await fetch(apiBase + "/api/todos" + "/" + index, {
+      await fetch(apiBase + "api/todos" + "/" + index, {
         method: "DELETE",
         headers: {
           Authorization: token,
@@ -314,7 +314,7 @@
         return;
       }
 
-      await fetch(apiBase + "/api/todos", {
+      await fetch(apiBase + "api/todos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
